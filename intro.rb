@@ -29,12 +29,6 @@ define :_kick do
   sleep _1_4
 end
 
-define :_drum_standard do
-  in_thread { _kick }
-  in_thread { _snap }
-  _snare
-end
-
 define :_triangles do |drop_last_note|
   7.times do
     sample :elec_triangle
@@ -44,6 +38,12 @@ define :_triangles do |drop_last_note|
   rate = drop_last_note ? 0.5 : 1
   sample :elec_triangle, rate: rate
   sleep _1_16
+end
+
+define :_drum_standard do
+  in_thread { _kick }
+  in_thread { _snap }
+  _snare
 end
 
 define :_drum_flourish do |drop_last_note|
